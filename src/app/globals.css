@@ -3,31 +3,119 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --color-pastel-blue: #a3c4f3;
+  --color-pastel-green: #b4e1c5;
+  --color-white: #ffffff;
+  --color-light-grey: #f7f7f7;
+  --color-text: #333333;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  @apply bg-light-grey text-text font-sans;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply text-center text-pastel-blue;
+}
+
+p {
+  @apply mb-4;
+}
+
+a {
+  @apply text-pastel-blue underline;
+}
+
+.container {
+  @apply max-w-screen-lg mx-auto px-4 py-8;
+}
+
+.header, .footer {
+  @apply bg-white shadow-md py-4;
+}
+
+.header {
+  @apply flex justify-between items-center px-6;
+}
+
+.footer {
+  @apply text-center;
+}
+
+.button {
+  @apply bg-pastel-blue text-white py-2 px-4 rounded;
+}
+
+.button:hover {
+  @apply bg-pastel-green;
+}
+
+.input, .textarea {
+  @apply border border-pastel-blue rounded px-4 py-2 w-full;
+}
+
+.input:focus, .textarea:focus {
+  @apply outline-none ring-2 ring-pastel-green;
+}
+
+.icon {
+  @apply inline-block w-6 h-6 fill-current text-pastel-blue;
+}
+
+.notification-icon {
+  @apply icon;
+}
+
+.upload-icon {
+  @apply icon;
+}
+
+.card {
+  @apply bg-white shadow-md rounded-lg p-6 mb-4;
+}
+
+.navbar {
+  @apply flex justify-between items-center bg-white py-4 shadow;
+}
+
+.navbar a {
+  @apply text-pastel-blue no-underline;
+}
+
+.navbar a:hover {
+  @apply text-pastel-green;
+}
+
+.white-space {
+  @apply my-8;
+}
+
+/* Tailwind Customization */
+@layer base {
+  body {
+    @apply text-base leading-relaxed;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white shadow-lg rounded-lg overflow-hidden;
+  }
+
+  .btn {
+    @apply bg-pastel-blue hover:bg-pastel-green text-white font-bold py-2 px-4 rounded;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-pastel-blue border border-pastel-blue hover:bg-light-grey;
+  }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .space-y-4 > :not([hidden]) ~ :not([hidden]) {
+    @apply mb-4;
   }
 }
